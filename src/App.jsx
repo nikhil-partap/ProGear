@@ -1,5 +1,5 @@
-import { Route, Routes } from "react-router-dom";
-import { Footer, Header, ScrollTop } from "./components/Layout";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { Footer, Header, ScrollTop, WhatsAppFloat } from "./components/Layout";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
@@ -17,7 +17,9 @@ export default function App() {
         <Route path="/product/:id" element={<Product />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <WhatsAppFloat />
       <Footer />
     </>
   );

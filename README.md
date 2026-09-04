@@ -10,7 +10,7 @@ npm run dev
 ```
 
 Create a production build with `npm run build`.
-
+ 
 ## Common edits
 
 | Change | File |

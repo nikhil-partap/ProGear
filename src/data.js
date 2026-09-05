@@ -81,12 +81,12 @@ export const processSteps = [
 ];
 
 export const testimonials = [
-  { quote: "Good quality mat available across all variety. Good feel and soft texture mat at affordable price", name: "Sachin K.", source: "Google review" },
-  { quote: "They are just Best in the business. Try once & thank me later.", name: "Ghoshit B.", source: "Google review" },
-  { quote: "Superb quality and lots of variety, highly recommended.", name: "Poonam G.", source: "Google review" },
-  { quote: "Good material and fitting.", name: "Rohit A.", source: "Google review" },
-  { quote: "Quality products with reasonable price.", name: "Praveen P.", source: "Google review" },
-  { quote: "Good quality super.", name: "Mahesh J.", source: "Google review" },
+  { quote: "Good quality mat available across all variety. Good feel and soft texture mat at affordable price", name: "Sachin K.", initials: "SK", avatar: "https://pro-gear-mats.grexa.site/_next/static/media/01.19fcdffb.jpg", source: "Google review" },
+  { quote: "They are just Best in the business. Try once & thank me later.", name: "Ghoshit B.", initials: "GB", avatar: "https://pro-gear-mats.grexa.site/_next/static/media/02.48c1bd5d.jpg", source: "Google review" },
+  { quote: "Superb quality and lots of variety, highly recommended.", name: "Poonam G.", initials: "PG", avatar: "https://pro-gear-mats.grexa.site/_next/static/media/03.6543a36c.jpg", source: "Google review" },
+  { quote: "Good material and fitting.", name: "Rohit A.", initials: "RA", avatar: "https://pro-gear-mats.grexa.site/_next/static/media/08.efbb8d99.jpg", source: "Google review" },
+  { quote: "Quality products with reasonable price.", name: "Praveen P.", initials: "PP", avatar: "https://pro-gear-mats.grexa.site/_next/static/media/07.e04c2895.jpg", source: "Google review" },
+  { quote: "Good quality super.", name: "Mahesh J.", initials: "MJ", avatar: "https://pro-gear-mats.grexa.site/_next/static/media/05.e08e4f9c.jpg", source: "Google review" },
 ];
 
 export const materials = [

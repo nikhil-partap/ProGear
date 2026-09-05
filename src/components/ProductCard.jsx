@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom";
+import { whatsappUrl } from "../data";
 
 export default function ProductCard({ product }) {
+  const message = `Hi ProGear Mats, I want to enquire about ${product.model} ${product.type} mats.`;
   return (
-    <article className="product-card group">
-      <Link to={`/product/${product.id}`} className="block overflow-hidden bg-zinc-900"><img src={product.image} alt={product.name} loading="lazy" className="aspect-square w-full object-cover transition duration-700 group-hover:scale-105" /></Link>
-      <div className="p-5"><p className="eyebrow">{product.category}</p><div className="mt-2 flex items-start justify-between gap-4"><div><h3 className="text-xl font-bold">{product.name}</h3><p className="mt-2 text-sm leading-6 text-zinc-500">{product.material}</p></div><Link to={`/product/${product.id}`} className="round-link" aria-label={`View ${product.name}`}>↗</Link></div></div>
+    <article className="catalog-card">
+      <Link to={`/product/${product.id}`} className="catalog-image-link" aria-label={`View ${product.model} fitment`}>
+        <img src={product.image} alt={`${product.model} ${product.type} car mat fitment`} loading="lazy" />
+        <span className="fitment-badge">{product.type}</span>
+      </Link>
+      <div className="catalog-card-body">
+        <p className="card-kicker">{product.confirmed ? "Fitment available to confirm" : "Gallery fitment · confirm details"}</p>
+        <h3><Link to={`/product/${product.id}`}>{product.model}</Link></h3>
+        <p className="card-meta">Custom-fit {product.type} mat pattern</p>
+        <a className="card-whatsapp" href={whatsappUrl(message)} target="_blank" rel="noreferrer">Enquire on WhatsApp <span aria-hidden="true">↗</span></a>
+      </div>
     </article>
   );
 }

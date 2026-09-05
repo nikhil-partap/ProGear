@@ -6,42 +6,12 @@ import { products, whatsappUrl } from "../data";
 export default function Product() {
   const { id } = useParams();
   const product = products.find(item => item.id === id);
-  const [color, setColor] = useState(product?.colors[0] || "");
-
-  useEffect(() => setColor(product?.colors[0] || ""), [product]);
-
-  if (!product) return <main className="page grid min-h-screen place-items-center pt-20"><div className="text-center"><h1 className="title">Product not found.</h1><Link to="/shop" className="btn-red mt-6">Back to collections</Link></div></main>;
-
-  const related = products.filter(item => item.id !== product.id).slice(0, 2);
-  const selectedFinish = color ? ` in ${color}` : "";
-
-  return (
-    <main className="page min-h-screen py-32">
-      <Link className="text-sm text-zinc-500 hover:text-white" to="/shop">← Back to collections</Link>
-      <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="product-visual"><img src={product.image} alt={product.name} className="aspect-square w-full object-cover" /><div className="image-tag">{product.imageLabel}</div></div>
-        <div className="flex flex-col justify-center">
-          <p className="eyebrow">{product.category} collection</p>
-          <h1 className="title mt-3">{product.name}</h1>
-          <p className="mt-5 text-lg leading-8 text-zinc-400">{product.description}</p>
-          {product.colors.length > 0 && <div className="mt-8 border-y border-white/10 py-6"><p className="mb-4 text-sm font-semibold">Choose a finish</p><div className="flex flex-wrap gap-2">{product.colors.map(item => <button key={item} onClick={() => setColor(item)} className={`filter ${color === item ? "active" : ""}`} aria-pressed={color === item}>{item}</button>)}</div></div>}
-          <ul className="my-7 grid gap-3 text-sm text-zinc-300">{product.highlights.map(item => <li key={item} className="flex gap-3"><span className="text-red-500">✓</span>{item}</li>)}</ul>
-          <a className="btn-red w-full justify-center sm:w-fit" href={whatsappUrl(`Hi ProGear Mats, I'm interested in ${product.name}${selectedFinish}. My car is:`)} target="_blank" rel="noreferrer">Enquire on WhatsApp <span aria-hidden="true">↗</span></a>
-          <p className="mt-4 text-xs text-zinc-600">We’ll confirm compatibility, availability and pricing before you order.</p>
-        </div>
-      </div>
-
-      <section className="product-details">
-        <div><p className="eyebrow">The details</p><h2 className="mt-4 text-3xl font-black tracking-tight">Built around your cabin.</h2><p className="mt-4 max-w-xl leading-7 text-zinc-500">Exact dimensions vary by car model. Share your vehicle year and variant so every contour can be confirmed before fitment.</p></div>
-        <dl className="spec-grid"><div><dt>Material</dt><dd>{product.material}</dd></div><div><dt>Coverage</dt><dd>{product.coverage}</dd></div><div><dt>Construction</dt><dd>{product.thickness}</dd></div><div><dt>Care</dt><dd>{product.care}</dd></div><div><dt>Installation</dt><dd>{product.fitment}</dd></div><div><dt>Available finishes</dt><dd>{product.colors.length ? `${product.colors.length} options` : "Confirm on WhatsApp"}</dd></div></dl>
-      </section>
-
-      <section className="compatibility-panel">
-        <div><p className="eyebrow">Confirmed fitments</p><h2 className="mt-4 text-3xl font-black tracking-tight">Currently available for.</h2><p className="mt-4 max-w-xl leading-7 text-zinc-500">These patterns are currently confirmed. The exact model year and transmission still need to be checked before ordering.</p></div>
-        <ul>{product.compatibleModels.map(model => <li key={model}>{model}</li>)}</ul>
-      </section>
-
-      <section className="pt-24"><div className="section-head"><div><p className="eyebrow">You may also like</p><h2 className="mt-3 text-3xl font-black tracking-tight">Compare another collection.</h2></div><Link className="text-link" to="/shop">View all collections ↗</Link></div><div className="mt-8 grid gap-5 sm:grid-cols-2">{related.map(item => <ProductCard key={item.id} product={item} />)}</div></section>
-    </main>
-  );
+  const [selectedImage, setSelectedImage] = useState(0);
+  useEffect(() => {
+    setSelectedImage(0);
+  }, [id]);
+  if (!product) return <main className="page page-top missing-page"><div><h1 className="page-title">Fitment not found.</h1><Link to="/shop" className="btn-primary">Back to catalogue</Link></div></main>;
+  const related = products.filter(item => item.id !== product.id && item.type === product.type).slice(0, 3);
+  const message = `Hi ProGear Mats, I want to enquire about ${product.model} ${product.type} mats. My car year/variant is:`;
+  return <main className="page page-top product-page"><Link className="back-link" to="/shop">← Back to all cars</Link><div className="product-layout"><div><div className="product-gallery"><img src={product.images[Math.min(selectedImage, product.images.length - 1)]} alt={`${product.model} ${product.type} mat fitment`} /><span className="fitment-badge">{product.type}</span></div><div className="thumb-row" aria-label="Fitment photos">{product.images.map((image, index) => <button key={image} type="button" className={index === selectedImage ? "active" : ""} onClick={() => setSelectedImage(index)} aria-label={`View fitment photo ${index + 1}`}><img src={image} alt="" /></button>)}</div></div><div className="product-copy"><div className="product-title-line"><p className="eyebrow">{product.type} fitment</p><span className={product.confirmed ? "status-pill" : "status-pill pending"}>{product.confirmed ? "Listed fitment" : "Confirm details"}</span></div><h1 className="page-title">{product.model}</h1><p className="product-lede">{product.description}</p><ul className="product-highlights">{product.highlights.map(item => <li key={item}><span>✓</span>{item}</li>)}</ul><a className="btn-primary full-mobile" href={whatsappUrl(message)} target="_blank" rel="noreferrer">Enquire on WhatsApp <span aria-hidden="true">↗</span></a><p className="microcopy">Send your exact year and variant so the team can check the pattern before ordering.</p></div></div><section className="details-block"><div><p className="eyebrow">Fitment details</p><h2 className="section-title">Made around<br />your cabin.</h2><p className="section-lede">The photos show the current gallery entry for this vehicle. Availability and exact compatibility are confirmed in conversation.</p></div><dl className="details-list"><div><dt>Coverage</dt><dd>{product.coverage}</dd></div><div><dt>Construction</dt><dd>{product.material}</dd></div><div><dt>Care</dt><dd>{product.care}</dd></div><div><dt>Fitment</dt><dd>{product.fitment}</dd></div></dl></section>{related.length > 0 && <section className="related-section"><div className="section-heading"><div><p className="eyebrow">More in the library</p><h2 className="section-title">Explore more {product.type} fits.</h2></div><Link className="text-link" to="/shop">View all cars ↗</Link></div><div className="catalog-grid">{related.map(item => <ProductCard key={item.id} product={item} />)}</div></section>}</main>;
 }

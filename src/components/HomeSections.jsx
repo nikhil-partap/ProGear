@@ -1,78 +1,33 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { fitmentGallery, fitmentGroups, materials, processSteps, site, testimonials, whatsappUrl } from "../data";
+import { fitments, materials, processSteps, site, testimonials, whatsappUrl } from "../data";
 
 export function MaterialStory() {
-  return (
-    <section className="section border-y border-white/10 bg-[#0c0c0c]">
-      <div className="page grid items-center gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
-        <div className="media-panel">
-          <img src="/images/red-diamond-mats.png" alt="Close-up of red diamond stitched ProGear car mats" loading="lazy" />
-          <div className="media-badge"><b>Multi-layer</b><span>cabin protection</span></div>
-        </div>
-        <div>
-          <p className="eyebrow">Made for daily life</p>
-          <h2 className="title mt-4">Protection that<br />looks premium.</h2>
-          <p className="mt-6 max-w-xl leading-7 text-zinc-400">Every surface, edge and layer has a job: contain the mess, stay securely in place and complement your cabin.</p>
-          <div className="mt-9 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2">
-            {materials.map(([number, title, copy]) => <article key={number} className="material-card"><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return <section className="section soft-section"><div className="page two-column-story"><div className="story-image"><img src={fitments.find(item => item.id === "fortuner")?.images[1]} alt="9D mats fitted in a Toyota Fortuner" loading="lazy" /><span>Real client fitment photo</span></div><div><p className="eyebrow">Why fitment matters</p><h2 className="section-title">A better floor starts with the right pattern.</h2><p className="section-lede">Every vehicle has its own floor shape. Share your exact model and variant, and the ProGear team will help you choose the right coverage.</p><div className="material-grid">{materials.map(([number, title, copy]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></div></div></section>;
 }
 
 export function Process() {
-  return (
-    <section className="section page">
-      <div className="section-head">
-        <div><p className="eyebrow">Simple from the start</p><h2 className="title mt-4">Three steps.<br />One perfect fit.</h2></div>
-        <p className="max-w-md leading-7 text-zinc-500">No confusing checkout. Tell us what you drive, compare the right options and confirm everything with a real person.</p>
-      </div>
-      <div className="process-line mt-14 grid gap-5 md:grid-cols-3">
-        {processSteps.map(([number, title, copy]) => <article key={number} className="process-card"><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}
-      </div>
-    </section>
-  );
+  return <section className="section"><div className="page"><div className="section-heading"><div><p className="eyebrow">Simple enquiry flow</p><h2 className="section-title">From car model<br />to right fit.</h2></div><p className="section-side-copy">No confusing checkout. Tell us what you drive and speak to the team directly.</p></div><div className="process-grid">{processSteps.map(([number, title, copy]) => <article key={number} className="process-card"><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></div></section>;
 }
 
 export function FitmentShowcase() {
-  return (
-    <section className="section page">
-      <div className="section-head">
-        <div><p className="eyebrow">Real model-specific work</p><h2 className="title mt-4">Fittings made<br />for your car.</h2></div>
-        <p className="max-w-md leading-7 text-zinc-500">Our current custom-fit library includes these confirmed 7D and 9D floor patterns. Share your exact year and variant before ordering.</p>
-      </div>
-      <div className="fitment-gallery mt-12">
-        {fitmentGallery.map(item => <figure key={item.model}><img src={item.image} alt={`${item.model} ${item.type} ProGear mat fitment`} loading="lazy" /><figcaption><span>{item.type} fitting</span><b>{item.model}</b></figcaption></figure>)}
-      </div>
-      <div className="mt-6 grid gap-5 lg:grid-cols-2">
-        {fitmentGroups.map(group => <article key={group.type} className="fitment-list"><div><span>{group.type}</span><h3>{group.title}</h3></div><ul>{group.models.map(model => <li key={model}>{model}</li>)}</ul></article>)}
-      </div>
-    </section>
-  );
+  const visible = fitments.slice(0, 8);
+  return <section className="section fitment-section"><div className="page"><div className="section-heading"><div><p className="eyebrow">Car-wise catalogue</p><h2 className="section-title">See the fit.<br />Find your car.</h2></div><div className="section-side-copy"><p>Browse real fitment images from the current library.</p><Link className="text-link" to="/shop">View all models <span aria-hidden="true">↗</span></Link></div></div><div className="fitment-grid">{visible.map(item => <Link to={`/product/${item.id}`} className="fitment-card" key={item.id}><img src={item.images[0]} alt={`${item.model} ${item.type} mat fitment`} loading="lazy" /><span className="fitment-badge">{item.type}</span><strong>{item.model}</strong></Link>)}</div></div></section>;
 }
 
 export function Testimonials() {
-  return (
-    <section className="pb-28">
-      <div className="page">
-        <div className="section-head"><div><p className="eyebrow">Verified Google reviews</p><h2 className="title mt-4">Loved after<br />the first drive.</h2></div><a className="rating" href={site.googlePage} target="_blank" rel="noreferrer"><span>★★★★★</span><b>{site.rating} from {site.reviewCount} reviews</b><p>View the Google business page ↗</p></a></div>
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {testimonials.map(item => <figure key={item.name} className="review-card"><div className="text-red-500">★★★★★</div><blockquote>“{item.quote}”</blockquote><figcaption><b>{item.name}</b><span>{item.car}</span></figcaption></figure>)}
-        </div>
-      </div>
-    </section>
-  );
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const timer = useRef(null);
+  useEffect(() => {
+    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches || testimonials.length < 2) return undefined;
+    timer.current = window.setInterval(() => setCurrent(index => (index + 1) % testimonials.length), 4500);
+    return () => window.clearInterval(timer.current);
+  }, [paused]);
+  const review = testimonials[current];
+  return <section className="section reviews-section"><div className="page"><div className="section-heading"><div><p className="eyebrow">From Google</p><h2 className="section-title">Good mats.<br />Happy drives.</h2></div><a className="text-link" href={site.googlePage} target="_blank" rel="noreferrer">See all reviews <span aria-hidden="true">↗</span></a></div><div className="review-carousel" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)} onTouchStart={() => setPaused(true)} onTouchEnd={() => setPaused(false)} onTouchCancel={() => setPaused(false)} role="region" aria-label="Customer reviews"><div className="review-stars" aria-label="Google review">★★★★★</div><blockquote aria-live="polite">“{review.quote}”</blockquote><div className="review-byline" aria-live="polite"><strong>{review.name}</strong><span>{review.source}</span></div><div className="review-controls" aria-label="Choose a review">{testimonials.map((item, index) => <button key={item.name} type="button" className={index === current ? "active" : ""} aria-label={`Show review from ${item.name}`} aria-pressed={index === current} onClick={() => setCurrent(index)} />)}</div></div></div></section>;
 }
 
 export function ClosingCta() {
-  return (
-    <section className="page pb-24">
-      <div className="closing-cta">
-        <div><p className="eyebrow">Ready for an upgrade?</p><h2>Let’s find your fit.</h2><p>Share your car details and get a personalised recommendation.</p></div>
-        <div className="flex flex-wrap gap-3"><a className="btn-red" href={whatsappUrl("Hi ProGear Mats, help me choose mats for my car.")} target="_blank" rel="noreferrer">Start on WhatsApp <span aria-hidden="true">↗</span></a><Link className="btn-dark" to="/shop">Browse collections</Link></div>
-      </div>
-    </section>
-  );
+  return <section className="page closing-section"><div className="closing-cta"><div><p className="eyebrow">Have a car in mind?</p><h2>Let’s find your fit.</h2><p>Share your model and get a direct recommendation from ProGear.</p></div><div className="cta-actions"><a className="btn-primary" href={whatsappUrl("Hi ProGear Mats, help me choose mats for my car.")} target="_blank" rel="noreferrer">Start on WhatsApp <span aria-hidden="true">↗</span></a><Link className="btn-secondary" to="/shop">Browse cars</Link></div></div></section>;
 }

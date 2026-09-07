@@ -1,27 +1,33 @@
-import { Link } from "react-router-dom";
-import CarFinder from "../components/CarFinder";
-import ProductCard from "../components/ProductCard";
-import { ClosingCta, FitmentShowcase, MaterialStory, Process, Testimonials } from "../components/HomeSections";
-import { benefits, products, site, whatsappUrl } from "../data";
-
-const heroImage = "/images/car%20wise%20images/Fortuner%20automatic%209D/0ef4d54c-c30c-43b7-8d56-7c2d2381da33.jpg";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { collections, heroSlides } from '../catalog';
+import { site } from '../data';
+import ProductCard from '../components/ProductCard';
+import Icon from '../components/Icon';
+import { ClosingCta, FitmentShowcase, MaterialStory, Process, Testimonials } from '../components/HomeSections';
 
 export default function Home() {
-  return <main>
-    <section className="home-hero"><div className="page hero-grid"><div className="hero-copy"><p className="eyebrow">Premium custom-fit car mats</p><h1>Made for your car.<br /><span>Ready for the road.</span></h1><p className="hero-lede">Explore real 7D and 9D fitments for your vehicle. Share your model and get a clear recommendation on WhatsApp.</p><div className="hero-actions"><a className="btn-primary" href={whatsappUrl("Hi ProGear Mats, I want to check mats for my car.")} target="_blank" rel="noreferrer">Check my fit on WhatsApp <span aria-hidden="true">↗</span></a><Link className="btn-secondary" to="/shop">Browse car models</Link></div><p className="hero-note">No online payment. Confirm the right fit with the team.</p></div><div className="hero-media"><img src={heroImage} alt="ProGear 9D mats fitted in a Toyota Fortuner" /><div className="hero-image-label"><span>Real fitment photo</span><strong>Toyota Fortuner · 9D</strong></div></div></div></section>
-
-    <section className="trust-strip"><div className="page trust-grid">{benefits.map(([number, title, copy]) => <article key={number}><span>{number}</span><div><strong>{title}</strong><p>{copy}</p></div></article>)}</div></section>
-
-    <section className="section catalogue-discovery"><div className="page"><div className="section-heading"><div><p className="eyebrow">Shop the fitment library</p><h2 className="section-title">Start with a car,<br />not a category.</h2></div><div className="section-side-copy"><p>One catalogue for both 7D and 9D patterns. Every card is tagged so you can see the fitment type at a glance.</p><Link className="text-link" to="/shop">View the full catalogue <span aria-hidden="true">↗</span></Link></div></div><div className="catalog-grid catalogue-preview">{products.slice(0, 4).map(product => <ProductCard key={product.id} product={product} />)}</div></div></section>
-
-    <section className="highlight-band"><div className="page highlight-inner"><div><p className="eyebrow">Made for real Indian drives</p><h2>Clean cabin. Clear fitment. Zero guesswork.</h2></div><p>From the first message to the final fit, ProGear keeps the enquiry simple and personal.</p></div></section>
-
-    <Testimonials />
-    <FitmentShowcase />
-    <MaterialStory />
-    <Process />
-
-    <section className="page finder-section"><div className="finder-panel"><div><p className="eyebrow">Can’t see your car?</p><h2 className="section-title">Tell us what<br />you drive.</h2><p className="section-lede">Choose your brand and model. We’ll continue the fitment check on WhatsApp.</p></div><CarFinder /></div></section>
-    <ClosingCta />
+  const [slide, setSlide] = useState(0);
+  const [paused, setPaused] = useState(false);
+  useEffect(() => {
+    if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const timer = window.setInterval(() => setSlide(i => (i + 1) % heroSlides.length), 6000);
+    return () => clearInterval(timer);
+  }, [paused]);
+  const current = heroSlides[slide];
+  return <main id="main-content">
+    <section className="hero" aria-label="ProGear collections">
+      <div className="hero-photos">{heroSlides.map((item, index) => <img key={item.id} src={item.image} className={index === slide ? 'active' : ''} alt={item.name + ' car mats, ' + item.type} fetchPriority={index === 0 ? 'high' : 'auto'} />)}</div>
+      <div className="hero-shade" />
+      <div className="page hero-content"><p className="eyebrow light"><span /> BUILT FOR YOUR CAR. MADE FOR YOUR LIFE.</p><h1>A better drive.<br />Starts <em>underfoot.</em></h1><p className="hero-description">Premium car mats. A made-for-you fit.<br />Because every detail of your drive deserves better.</p><div className="hero-actions"><Link to="/shop" className="button red">Shop the collection <Icon name="arrow" /></Link><a href="#real-fitments" className="hero-secondary">See the real fit <Icon name="diagonal" size={17} /></a></div><div className="hero-proof"><Icon name="shield" size={19} /><span>Custom-fit protection</span><i /><span>Delivered across India</span></div></div>
+      <div className="page hero-bottom"><div className="hero-pagination">{heroSlides.map((item, index) => <button key={item.id} aria-label={'Show ' + item.name} aria-pressed={slide === index} className={slide === index ? 'active' : ''} onClick={() => { setSlide(index); setPaused(true); }}><span>0{index + 1}</span><i /></button>)}<button className="pause-button" aria-label={paused ? 'Play slideshow' : 'Pause slideshow'} onClick={() => setPaused(p => !p)}><Icon name={paused ? 'play' : 'pause'} size={14} /></button></div><Link className="hero-caption" to={'/product/' + current.id}><span>IN THE FRAME</span><strong>{current.name} <small>{current.type}</small></strong><Icon name="diagonal" size={20} /></Link></div>
+    </section>
+    <section className="benefit-strip"><div className="page benefit-grid">{[['truck', 'Free shipping', 'Across India'], ['car', 'Made for your car', 'A precise, tailored fit'], ['layers', 'Protection in every layer', 'Built for everyday life'], ['chat', 'Real people. Real help.', 'Expert fitment support']].map(([icon, title, text]) => <div key={title}><Icon name={icon} size={27} /><div><strong>{title}</strong><span>{text}</span></div></div>)}</div></section>
+    <section className="section page" id="collections"><div className="section-heading"><div><p className="eyebrow">THE PROGEAR COLLECTION</p><h2>Find your kind of upgrade.</h2></div><Link className="text-link" to="/shop">Shop all mats <Icon name="arrow" size={18} /></Link></div><div className="collection-grid">{collections.map(p => <ProductCard key={p.id} product={p} />)}</div><p className="collection-footnote">From everyday essentials to the full luxury treatment. There’s a ProGear for your drive.</p></section>
+    <MaterialStory /><FitmentShowcase />
+    <section className="offer-band"><div className="page"><div><p className="eyebrow light">A LITTLE EXTRA, ON US</p><h2>Your upgrade.<br />Now <em>10% better.</em></h2></div><div><p>Get an additional 10% off when you pay in full.<br />Plus, free shipping anywhere in India.</p><Link className="button white" to="/shop">Choose your mats <Icon name="arrow" /></Link><span className="offer-note">Prefer to pay later? Confirm your order with 20% advance.</span></div></div></section>
+    <Testimonials /><Process /><ClosingCta />
+    <div className="social-line page"><Icon name="instagram" /><span>A little inspiration for your next upgrade.</span><a href={site.instagram} target="_blank" rel="noreferrer">@insta_pro.gear <Icon name="diagonal" size={16} /></a></div>
   </main>;
 }
+

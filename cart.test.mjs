@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import { readCart, mergeCartItem } from './src/cart.js';
+globalThis.localStorage = { getItem: () => '{broken' };
+assert.deepEqual(readCart(), []);
+localStorage.getItem = () => '{}';
+assert.deepEqual(readCart(), []);
+const item = {key: 'car-one', price: 6999, quantity: 1};
+assert.equal(mergeCartItem([item], item)[0].quantity, 2);
+assert.equal(item.quantity, 1);
+assert.equal(mergeCartItem([item], {...item, key: 'car-two'}).length, 2);
+localStorage.getItem = () => JSON.stringify([item, {key:'bad', quantity:-1, price:5}]);
+assert.deepEqual(readCart(), [item]);
+console.log('Cart checks passed');

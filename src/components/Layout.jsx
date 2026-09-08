@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { site, whatsappUrl } from '../data';
 import { collections } from '../catalog';
@@ -18,14 +18,33 @@ export function ScrollTop() {
 }
 export function Header({ cartCount = 0 }) {
   const [open, setOpen] = useState(false);
+  const headerRef = useRef(null);
+  const menuRef = useRef(null);
   const [count, setCount] = useState(cartCount);
   const location = useLocation();
+  useEffect(() => {
+    if (!open) return;
+    const dismiss = event => {
+      if (event.key === 'Escape') { setOpen(false); menuRef.current?.focus(); }
+      else if (event.type === 'pointerdown' && !headerRef.current?.contains(event.target)) setOpen(false);
+    };
+    const desktop = window.matchMedia('(min-width: 901px)');
+    const resize = () => { if (desktop.matches) setOpen(false); };
+    document.addEventListener('keydown', dismiss);
+    document.addEventListener('pointerdown', dismiss);
+    desktop.addEventListener('change', resize);
+    return () => {
+      document.removeEventListener('keydown', dismiss);
+      document.removeEventListener('pointerdown', dismiss);
+      desktop.removeEventListener('change', resize);
+    };
+  }, [open]);
   useEffect(() => setOpen(false), [location.pathname, location.search]);
   useEffect(() => { const update = () => setCount(readCart().reduce((sum, item) => sum + item.quantity, 0)); update(); window.addEventListener('storage', update); window.addEventListener('progear-cart-updated', update); return () => { window.removeEventListener('storage', update); window.removeEventListener('progear-cart-updated', update); }; }, [location.pathname]);
   return <>
     <a className="skip-link" href="#main-content">Skip to content</a>
     <div className="announcement"><div className="page"><span><Icon name="truck" size={15} /> FREE SHIPPING ACROSS INDIA</span><span><b>EXTRA 10% OFF ON FULL PAYMENT</b> <Icon name="arrow" size={14} /></span><a href={'tel:' + site.whatsapp}>Need help? Call us <Icon name="diagonal" size={13} /></a></div></div>
-    <header className="site-header"><div className="page header-inner"><Link to="/" className="brand-lockup" aria-label="ProGear Mats home"><img src="/images/progear-logo1.png" alt="ProGear premium car mats" /></Link><nav className="desktop-nav" aria-label="Main navigation">{navItems.map(([to, label]) => <NavLink to={to} end={to === '/'} key={to}>{label}</NavLink>)}</nav><div className="header-actions"><Link className="header-help" to="/contact">Let’s talk <Icon name="diagonal" size={16} /></Link><Link to="/cart" className="cart-link" aria-label={'Shopping cart, ' + count + ' items'}><Icon name="bag" /><span className="cart-word">Cart</span><span className="cart-count">{count}</span></Link><button className="icon-button menu-button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(v => !v)}><Icon name={open ? 'close' : 'menu'} /></button></div></div>{open && <nav className="mobile-nav page" id="mobile-navigation" aria-label="Mobile navigation">{[...navItems, ['/contact', 'Contact & support'], ['/cart', 'Cart']].map(([to, label]) => <NavLink to={to} end={to === '/'} key={to}>{label}<Icon name="arrow" size={16} /></NavLink>)}</nav>}</header>
+    <header ref={headerRef} className="site-header"><div className="page header-inner"><Link to="/" className="brand-lockup" aria-label="ProGear Mats home"><img src="/images/progear-logo1.png" alt="ProGear premium car mats" /></Link><nav className="desktop-nav" aria-label="Main navigation">{navItems.map(([to, label]) => <NavLink to={to} end={to === '/'} key={to}>{label}</NavLink>)}</nav><div className="header-actions"><Link className="header-help" to="/contact">Let’s talk <Icon name="diagonal" size={16} /></Link><Link to="/cart" className="cart-link" aria-label={'Shopping cart, ' + count + ' items'}><Icon name="bag" /><span className="cart-word">Cart</span><span className="cart-count">{count}</span></Link><button ref={menuRef} type="button" className="icon-button menu-button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(v => !v)}><Icon name={open ? 'close' : 'menu'} /></button></div></div>{open && <nav className="mobile-nav page" id="mobile-navigation" aria-label="Mobile navigation">{[...navItems, ['/contact', 'Contact & support'], ['/cart', 'Cart']].map(([to, label]) => <NavLink to={to} end={to === '/'} key={to} onClick={() => setOpen(false)}><span>{label}</span><Icon name="arrow" size={16} /></NavLink>)}</nav>}</header>
   </>;
 }
 export function Footer() {

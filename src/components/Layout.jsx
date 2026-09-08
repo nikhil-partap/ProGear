@@ -67,6 +67,13 @@ export function Footer() {
   </footer>;
 }
 export function WhatsAppFloat() {
-  return <a className="whatsapp-float" href={whatsappUrl('Hi ProGear Mats, help me choose mats for my car.')} target="_blank" rel="noreferrer" aria-label="Chat with ProGear on WhatsApp"><Icon name="chat" size={22} /><span>Let’s find your fit</span></a>;
+  const [typing, setTyping] = useState(false);
+  useEffect(() => {
+    const update = () => setTyping(['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName));
+    document.addEventListener('focusin', update);
+    document.addEventListener('focusout', update);
+    return () => { document.removeEventListener('focusin', update); document.removeEventListener('focusout', update); };
+  }, []);
+  return <a className={'whatsapp-float' + (typing ? ' is-typing' : '')} href={whatsappUrl('Hi ProGear Mats, help me choose mats for my car.')} target="_blank" rel="noreferrer" aria-label="Chat with ProGear on WhatsApp"><Icon name="chat" size={22} /><span>Let’s find your fit</span></a>;
 }
 

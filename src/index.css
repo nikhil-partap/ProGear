@@ -440,3 +440,38 @@ a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visib
   .mobile-nav a:hover { background: #f6f6f6; }
 }
 @media(min-width:901px) { .site-header .mobile-nav, .site-header .menu-button { display: none; } }
+/* Mobile audit: readable cards, compact forms and consistent page spacing. */
+.contact-input { margin-top: 6px; font-weight: 400; }
+.contact-form textarea { font-weight: 400; }
+.about-shop-button { margin-top: 20px; }
+.collection-image .universal-art { align-items: flex-start; padding-top: 42px; }
+.collection-image .universal-art strong { font-size: clamp(17px, 2vw, 26px); line-height: 1.2; margin: 0 0 6px; }
+.collection-image .universal-art > span { letter-spacing: 0; font-size: 10px; margin-top: 8px; }
+.gallery-page .fitment-card { display: block; }
+.gallery-page .fitment-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
+@media(max-width:900px) {
+  .gallery-page .fitment-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .gallery-page .fitment-card:nth-child(n+5) { display: block; }
+  .whatsapp-float.is-typing { visibility: hidden; }
+  .fitment-section .section-heading { align-items: start; flex-direction: column; gap: 4px; }
+  .fitment-section .section-side-copy .text-link { margin-top: 4px; }
+  .page-top { padding-bottom: 40px; }
+  .about-intro, .contact-intro { padding-top: 12px; padding-bottom: 28px; gap: 24px; }
+  .about-copy { font-size: 14px; line-height: 1.7; }
+  .contact-form label { font-size: 13px; font-weight: 500; }
+  .contact-links a { min-height: 44px; display: flex; align-items: center; overflow-wrap: anywhere; }
+  .contact-form [data-slot=button], .visit-copy [data-slot=button] { width: 100%; white-space: normal; }
+  .qr-card { column-gap: 12px; row-gap: 4px; grid-template-columns: 64px minmax(0,1fr); }
+  .qr-card img { width: 64px; }
+  .qr-card strong { overflow-wrap: anywhere; }
+  .connect-strip { margin-top: 32px; padding-top: 28px; }
+  .collection-image .universal-art { padding: 36px 10px 10px; }
+  .collection-image .universal-art p { font-size: 10px; }
+  .collection-image .universal-art > span { font-size: 9px; }
+  .universal-card .collection-arrow { display: none; }
+  .product-copy h1 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .product-copy h1 span { flex-shrink: 0; }
+  .price-caption { font-size: 12px; line-height: 1.6; margin-top: 8px; }
+  .review-controls button { position: relative; }
+  .review-controls button::after { content: ''; position: absolute; inset: -12px; }
+}

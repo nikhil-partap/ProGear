@@ -29,7 +29,23 @@ export function Header({ cartCount = 0 }) {
   </>;
 }
 export function Footer() {
-  return <footer className="site-footer"><div className="page footer-grid"><div className="footer-brand-column"><Link to="/" className="footer-wordmark">PRO<span>GEAR</span><i>®</i></Link><p>A better drive starts with the details.<br />Premium car mats, made for your life.</p><div className="footer-socials"><a href={site.instagram} target="_blank" rel="noreferrer" aria-label="ProGear on Instagram"><Icon name="instagram" /></a><a href={whatsappUrl('Hi ProGear, I need help choosing my mats.')} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp"><Icon name="chat" /></a><a href={site.googlePage} target="_blank" rel="noreferrer">Google ↗</a></div></div><div><h3>THE COLLECTION</h3>{collections.map(p => <Link key={p.id} to={'/product/' + p.id}>{p.name}{p.id === 'universal' ? '' : ' / ' + p.type}</Link>)}</div><div><h3>HERE TO HELP</h3><Link to="/contact">Contact us</Link><Link to="/gallery">Customer gallery</Link><Link to="/contact">Returns & order support</Link></div><div><h3>TALK TO PROGEAR</h3>{['+91 75308 19890', '+91 88515 85780', '+91 87007 11921'].map(n => <a href={'tel:' + n.replaceAll(' ', '')} key={n}>{n}</a>)}<a href={'mailto:' + site.email}>{site.email}</a><a href={site.mapLink} target="_blank" rel="noreferrer" className="footer-location">Rohini, New Delhi <Icon name="diagonal" size={14} /></a></div></div><div className="page footer-bottom"><span>© {new Date().getFullYear()} ProGear Mats. All rights reserved.</span><span>MADE FOR THE ROAD AHEAD.</span><span>DELIVERING PAN INDIA <Icon name="truck" size={17} /></span></div></footer>;
+  return <footer className="site-footer">
+    <div className="page footer-grid">
+      <div className="footer-brand-column">
+        <Link to="/" className="footer-wordmark" aria-label="ProGear home">PRO<span>GEAR</span><sup>®</sup></Link>
+        <p>Car mats made for your drive.<br />Delivered across India.</p>
+        <div className="footer-socials">
+          <a href={site.instagram} target="_blank" rel="noreferrer" aria-label="ProGear on Instagram"><Icon name="instagram" size={20} /></a>
+          <a href={whatsappUrl('Hi ProGear, I need help choosing my mats.')} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp"><Icon name="chat" size={20} /></a>
+          <a href={site.googlePage} target="_blank" rel="noreferrer" aria-label="ProGear on Google Maps">Google <Icon name="diagonal" size={14} /></a>
+        </div>
+      </div>
+      <nav className="footer-link-group" aria-label="Footer collections"><h3>Shop mats</h3>{collections.map(p => <Link key={p.id} to={'/product/' + p.id}>{p.name}</Link>)}</nav>
+      <nav className="footer-link-group" aria-label="Footer support"><h3>Explore & help</h3><Link to="/gallery">Customer gallery</Link><Link to="/about">Our story</Link><Link to="/contact">Contact us</Link><Link to="/contact">Order support</Link></nav>
+      <div className="footer-contact"><h3>Talk to ProGear</h3><p>Need help finding your fit?</p><a className="footer-primary-phone" href={'tel:' + site.whatsapp}>+91 75308 19890 <Icon name="diagonal" size={17} /></a><div className="footer-other-phones">{['+91 88515 85780', '+91 87007 11921'].map(n => <a href={'tel:' + n.replaceAll(' ', '')} key={n}>{n}</a>)}</div><a href={'mailto:' + site.email}>{site.email}</a><a href={site.mapLink} target="_blank" rel="noreferrer" className="footer-location">Rohini, New Delhi <Icon name="diagonal" size={14} /></a></div>
+    </div>
+    <div className="page footer-bottom"><span>© {new Date().getFullYear()} ProGear Mats</span><span>All rights reserved.</span></div>
+  </footer>;
 }
 export function WhatsAppFloat() {
   return <a className="whatsapp-float" href={whatsappUrl('Hi ProGear Mats, help me choose mats for my car.')} target="_blank" rel="noreferrer" aria-label="Chat with ProGear on WhatsApp"><Icon name="chat" size={22} /><span>Let’s find your fit</span></a>;

@@ -80,13 +80,15 @@ export const processSteps = [
   ["03", "Confirm the fit", "The exact pattern is checked before you place an order."],
 ];
 
-export const testimonials = [
-  { quote: "Good quality mat available across all variety. Good feel and soft texture mat at affordable price", name: "Sachin K.", initials: "SK", avatar: "https://pro-gear-mats.grexa.site/_next/static/media/01.19fcdffb.jpg", source: "Google review" },
-  { quote: "They are just Best in the business. Try once & thank me later.", name: "Ghoshit B.", initials: "GB", avatar: "https://pro-gear-mats.grexa.site/_next/static/media/02.48c1bd5d.jpg", source: "Google review" },
-  { quote: "Superb quality and lots of variety, highly recommended.", name: "Poonam G.", initials: "PG", avatar: "https://pro-gear-mats.grexa.site/_next/static/media/03.6543a36c.jpg", source: "Google review" },
-  { quote: "Good material and fitting.", name: "Rohit A.", initials: "RA", avatar: "https://pro-gear-mats.grexa.site/_next/static/media/08.efbb8d99.jpg", source: "Google review" },
-  { quote: "Quality products with reasonable price.", name: "Praveen P.", initials: "PP", avatar: "https://pro-gear-mats.grexa.site/_next/static/media/07.e04c2895.jpg", source: "Google review" },
-  { quote: "Good quality super.", name: "Mahesh J.", initials: "MJ", avatar: "https://pro-gear-mats.grexa.site/_next/static/media/05.e08e4f9c.jpg", source: "Google review" },
+export const aboutReviews = [
+  { name: "Ishit Rider", initials: "IR", when: "a year ago", quote: "I’ve bought a lot of accessories over the years, but these mats stand out. The fit is exact, the quality feels built to last, and the whole experience felt honest. Feels good when someone delivers more than expected.", link: "https://maps.app.goo.gl/Ga2sVnMpEV1Dnd2s8", avatar: "https://lh3.googleusercontent.com/a-/ALV-UjWvP4DanEb2N5JoYZTCNH3REMAn0L2osJs2kVs8Fi_EttYNG1n_=w45-h45-p-rp-mo-ba12-br100" },
+  { name: "Vivek Pandey", initials: "VP", when: "a year ago", quote: "Mat quality is good and customer nature and service is very good pls guys please visit at once", link: "https://maps.app.goo.gl/WpfPkR86M9BjGGUG8", avatar: "https://lh3.googleusercontent.com/a-/ALV-UjWbMCdwAzOq5rkxhfwF9kz-JDYZl5xFPl8oomvshPvKnOvyuvrkeA=w45-h45-p-rp-mo-br100" },
+  { name: "Sachin Khanna", initials: "SK", when: "a year ago", quote: "Good quality mat available across all variety. Good feel and soft texture mat at affordable price", link: "https://maps.app.goo.gl/X7suk3PdBEKTpwTE6", avatar: "https://lh3.googleusercontent.com/a/ACg8ocIgW0t_DI_99cxXVn3H3WWgZ8lU0sjweYgHJyXydJG8LGXkLQ=w45-h45-p-rp-mo-br100" },
+  { name: "Ghoshit Bhagat", initials: "GB", when: "10 months ago", quote: "They are just Best in the business. Try once & thank me later. 🫶", link: "https://maps.app.goo.gl/MW9mRo13mmq9kUQY7", avatar: "https://lh3.googleusercontent.com/a-/ALV-UjW0vlWTRonXDFCPOqdWHh2rDUrLju5lxuVZnMmhit7WdxqDYDcj=w45-h45-p-rp-mo-br100" },
+  { name: "Aditya Chaturvedi", initials: "AC", when: "a year ago", quote: "Best product,quality is really good, timely delivered..", link: "https://maps.app.goo.gl/P7iw4Mw5zhcT8duDA", avatar: "https://lh3.googleusercontent.com/a-/ALV-UjXU6GRDij6TgjfZJUGnXZ-bmxmQDSlmeVvy49ilug2LZjeu_Isa=w45-h45-p-rp-mo-br100" },
+  { name: "Poonam Gaur", initials: "PG", when: "a year ago", quote: "Superb quality and lots of variety, highly recommended 😇", link: "https://maps.app.goo.gl/R7Mq9VQVth1LCzMs6", avatar: "https://lh3.googleusercontent.com/a/ACg8ocLH23Afrdv_rCeNdoq-6yuIdFHa7t-XyspxHbTC0zFf8TuyUQ=w45-h45-p-rp-mo-br100" },
+  { name: "Hari Priyan", initials: "HP", when: "a year ago", quote: "Good quality 7D mats you can trust and well designed.", link: "https://maps.app.goo.gl/jG8Gc17q79CaWagj8", avatar: "https://lh3.googleusercontent.com/a/ACg8ocJcWVHki-oR-XJ2vEVyAUAgJqIyy8nrJlOsEig08cJQWorpDw=w45-h45-p-rp-mo-br100" },
+  { name: "Chanchal Rathore", initials: "CR", when: "3 months ago", quote: "Product quality is good and proper feeting", link: "https://maps.app.goo.gl/tgBUFmGtudb8Fsoj7" },
 ];
 
 export const materials = [

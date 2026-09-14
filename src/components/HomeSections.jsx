@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { fitments, materials, processSteps, site, testimonials, whatsappUrl } from "../data";
+import { aboutReviews, fitments, materials, processSteps, site, whatsappUrl } from "../data";
 
 export function MaterialStory() {
   return <section className="section soft-section"><div className="page two-column-story"><div className="story-image"><img src={fitments.find(item => item.id === "fortuner")?.images[1]} alt="9D mats fitted in a Toyota Fortuner" loading="lazy" /><span>Real client fitment photo</span></div><div><p className="eyebrow">Why fitment matters</p><h2 className="section-title">A better floor starts with the right pattern.</h2><p className="section-lede">Every vehicle has its own floor shape. Share your exact model and variant, and the ProGear team will help you choose the right coverage.</p><div className="material-grid">{materials.map(([number, title, copy]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></div></div></section>;
@@ -19,13 +19,14 @@ export function Testimonials() {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
   const timer = useRef(null);
+  const reviews = aboutReviews;
   useEffect(() => {
-    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches || testimonials.length < 2) return undefined;
-    timer.current = window.setInterval(() => setCurrent(index => (index + 1) % testimonials.length), 4500);
+    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches || reviews.length < 2) return undefined;
+    timer.current = window.setInterval(() => setCurrent(index => (index + 1) % reviews.length), 4500);
     return () => window.clearInterval(timer.current);
   }, [paused]);
-  const review = testimonials[current];
-  return <section className="section reviews-section"><div className="page"><div className="section-heading"><div><p className="eyebrow">From Google</p><h2 className="section-title">Customer reviews.</h2></div><a className="text-link" href={site.googlePage} target="_blank" rel="noreferrer">See all reviews <span aria-hidden="true">↗</span></a></div><div className="review-carousel" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)} onTouchStart={() => setPaused(true)} onTouchEnd={() => setPaused(false)} onTouchCancel={() => setPaused(false)} role="region" aria-label="Customer reviews"><div className="review-stars" aria-label="Google review">★★★★★</div><blockquote aria-live="polite">“{review.quote}”</blockquote><div className="review-byline" aria-live="polite"><div className="review-avatar"><span aria-hidden="true">{review.initials}</span><img src={review.avatar} alt={`${review.name} profile photo`} loading="lazy" onError={event => { event.currentTarget.style.display = "none"; }} /></div><div className="review-byline-copy"><strong>{review.name}</strong><span>{review.source}</span></div></div><div className="review-controls" aria-label="Choose a review">{testimonials.map((item, index) => <button key={item.name} type="button" className={index === current ? "active" : ""} aria-label={`Show review from ${item.name}`} aria-pressed={index === current} onClick={() => setCurrent(index)} />)}</div></div></div></section>;
+  const review = reviews[current];
+  return <section className="section reviews-section"><div className="page"><div className="section-heading"><div><p className="eyebrow">From Google</p><h2 className="section-title">Customer reviews.</h2></div><a className="text-link" href={site.googlePage} target="_blank" rel="noreferrer">See all reviews <span aria-hidden="true">↗</span></a></div><div className="review-carousel" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)} onTouchStart={() => setPaused(true)} onTouchEnd={() => setPaused(false)} onTouchCancel={() => setPaused(false)} role="region" aria-label="Customer reviews"><div className="review-stars" aria-label="Google review">★★★★★</div><blockquote aria-live="polite">“{review.quote}”</blockquote><div className="review-byline" aria-live="polite"><div className="review-avatar"><span aria-hidden="true">{review.initials}</span>{review.avatar && <img src={review.avatar} alt={`${review.name} profile photo`} loading="lazy" referrerPolicy="no-referrer" onError={event => { event.currentTarget.style.display = "none"; }} />}</div><div className="review-byline-copy"><strong>{review.name}</strong><span>{review.when} · Google review</span></div></div><div className="review-controls" aria-label="Choose a review">{reviews.map((item, index) => <button key={item.link} type="button" className={index === current ? "active" : ""} aria-label={`Show review from ${item.name}`} aria-pressed={index === current} onClick={() => setCurrent(index)} />)}</div></div></div></section>;
 }
 
 export function ClosingCta() {

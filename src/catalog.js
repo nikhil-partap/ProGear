@@ -21,8 +21,7 @@ export const collections = [
   {
     id: 'universal', name: 'Universal', type: 'All-weather', label: 'The everyday essential',
     description: 'Practical, all-weather protection. Trim-to-fit mats that make everyday upkeep simple.',
-    // Confirmed by the user: 2099 is the sale price; 2499 is MRP.
-    prices: { Normal: { 5: [2099, 2499], 7: [2099, 2499] }, Luxury: { 5: [2099, 2499], 7: [2099, 2499] } }, colours: [], images: [],
+    prices: { Normal: { 5: [2099, 2499], 7: [2499, 2499] }, Luxury: { 5: [2099, 2499], 7: [2499, 2499] } }, colours: [], images: [],
     features: ['Trim-to-fit design', 'Deep spill channels', 'All-weather protection'],
     specs: [
       ['Trim-to-fit design', 'Pre-moulded trim lines allow the mats to be trimmed for a closer fit around foot pedals and seat rails. Check pedal clearance before driving.'],
@@ -69,7 +68,7 @@ export const money = value => new Intl.NumberFormat('en-IN', { style: 'currency'
 export const priceFor = (product, category = 'Normal', seats = '5') => product?.prices?.[category]?.[seats] ?? null;
 export const startingPrice = product => priceFor(product)?.[0] ?? product.startingPrice;
 export const heroSlides = [
-  { image: premium('3.20.23 PM'), name: 'Premium', type: '9D · Coffee finish', id: 'premium' },
+  { image: '/images/hero-9d-wide.webp', mobileImage: '/images/hero-9d-mobile.webp', name: 'Premium', type: '9D · Ivory finish', id: 'premium' },
   { image: value('Full Black'), name: 'TrueValue', type: '7D · Full Black', id: 'truevalue' },
   { image: pro('5.08.11 PM (1)'), name: 'Premium Pro', type: '9D Pro · Black & Red', id: 'premium-pro' },
 ];

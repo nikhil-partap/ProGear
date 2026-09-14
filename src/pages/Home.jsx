@@ -17,8 +17,8 @@ export default function Home() {
   }, [paused]);
   const current = heroSlides[slide];
   return <main id="main-content">
-    <section className="hero" aria-label="ProGear collections">
-      <div className="hero-photos">{heroSlides.map((item, index) => <img key={item.id} src={item.image} className={index === slide ? 'active' : ''} alt={item.name + ' car mats, ' + item.type} fetchPriority={index === 0 ? 'high' : 'auto'} />)}</div>
+    <section className={'hero hero-slide-' + slide} aria-label="ProGear collections">
+      <div className="hero-photos">{heroSlides.map((item, index) => item.mobileImage ? <picture key={item.id}><source media="(max-width: 900px)" srcSet={item.mobileImage} /><img src={item.image} className={index === slide ? 'active' : ''} alt={item.name + ' car mats, ' + item.type} fetchPriority={index === 0 ? 'high' : 'auto'} /></picture> : <img key={item.id} src={item.image} className={index === slide ? 'active' : ''} alt={item.name + ' car mats, ' + item.type} fetchPriority={index === 0 ? 'high' : 'auto'} />)}</div>
       <div className="hero-shade" />
       <div className="page hero-content"><p className="eyebrow light">PROGEAR CAR MATS</p><h1>Made for<br />your car.</h1><p className="hero-description">Tailored coverage. Everyday comfort.</p><div className="hero-actions"><Button asChild variant="destructive"><Link to="/shop">Shop mats <Icon name="arrow" /></Link></Button></div></div>
       <div className="mobile-product-caption"><div><span>{current.type}</span><h1>{current.name} car mats</h1><p>From {money(startingPrice(collections.find(p => p.id === current.id)))}</p></div><Button asChild><Link to={'/product/' + current.id}>Explore <Icon name="arrow" size={16} /></Link></Button></div>

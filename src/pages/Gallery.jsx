@@ -101,32 +101,35 @@ export default function Gallery() {
         </div>
       </section>
 
-      {selectedFitment && (
-        <div className="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Fitment photo viewer">
-          <div className="gallery-lightbox-top">
-            <span>{String(imageIndex + 1).padStart(2, '0')} / {String(selectedFitment.images.length).padStart(2, '0')}</span>
-            <button className="gallery-close" type="button" onClick={closeLightbox} ref={closeRef} aria-label="Close photo viewer">
-              <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m1 1 10 10M11 1 1 11" /></svg>
-            </button>
-          </div>
-          <div className="gallery-lightbox-stage">
-            <img src={selectedImage} alt={`${selectedFitment.model} ${selectedFitment.type} car mats — fitment photo ${imageIndex + 1}`} />
-          </div>
-          <div className="gallery-lightbox-bottom">
-            <div>
-              <strong>{selectedFitment.model}</strong>
-              <span>{selectedFitment.type} · {selectedFitment.confirmed ? 'confirmed' : 'gallery'} fitment</span>
+      {selectedFitment && (() => {
+        const viewLabel = ['Driver side', 'Co-Driver', 'Back Side'][imageIndex] || `Rear view ${imageIndex - 1}`;
+        return (
+          <div className="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Fitment photo viewer">
+            <div className="gallery-lightbox-top">
+              <span>{String(imageIndex + 1).padStart(2, '0')} / {String(selectedFitment.images.length).padStart(2, '0')} &nbsp;·&nbsp; {viewLabel}</span>
+              <button className="gallery-close" type="button" onClick={closeLightbox} ref={closeRef} aria-label="Close photo viewer">
+                <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m1 1 10 10M11 1 1 11" /></svg>
+              </button>
             </div>
-            <div className="gallery-lightbox-actions">
-              <button className="gallery-arrow" type="button" onClick={() => moveImage(-1)} aria-label="Previous photo"><Arrow direction="prev" /></button>
-              <button className="gallery-arrow" type="button" onClick={() => moveImage(1)} aria-label="Next photo"><Arrow direction="next" /></button>
-              <a className="gallery-enquire" href={whatsappUrl(`Hi ProGear Mats! I saw the ${selectedFitment.model} (${selectedFitment.type}) fitment on your website. Please share options for my car.`)} target="_blank" rel="noreferrer">
-                Enquire for your car <span aria-hidden="true">↗</span>
-              </a>
+            <div className="gallery-lightbox-stage">
+              <img src={selectedImage} alt={`${selectedFitment.model} ${selectedFitment.type} car mats — ${viewLabel} photo ${imageIndex + 1}`} />
+            </div>
+            <div className="gallery-lightbox-bottom">
+              <div>
+                <strong>{selectedFitment.model}</strong>
+                <span>{selectedFitment.type} · {selectedFitment.confirmed ? 'confirmed' : 'gallery'} fitment · <span className="view-tag">{viewLabel}</span></span>
+              </div>
+              <div className="gallery-lightbox-actions">
+                <button className="gallery-arrow" type="button" onClick={() => moveImage(-1)} aria-label="Previous photo"><Arrow direction="prev" /></button>
+                <button className="gallery-arrow" type="button" onClick={() => moveImage(1)} aria-label="Next photo"><Arrow direction="next" /></button>
+                <a className="gallery-enquire" href={whatsappUrl(`Hi ProGear Mats! I saw the ${selectedFitment.model} (${selectedFitment.type}) fitment on your website. Please share options for my car.`)} target="_blank" rel="noreferrer">
+                  Enquire for your car <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </main>
   );
 }

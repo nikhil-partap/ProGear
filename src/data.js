@@ -20,21 +20,22 @@ const fitment = (id, model, type, folder, files, confirmed = true, directImages 
 });
 
 export const fitments = [
-  fitment("audi-a4", "Audi A4", "7D", "all 7D/Audi A4", ["0e9085eb-ea83-40b5-ad85-df44e5f9d7b0.jpg", "10ddf9a9-1f44-4e61-89db-8b2ec06c09b2.jpg", "e35ab3a1-6fc6-456e-a809-7e262afff02d.jpg"]),
+  fitment("audi-a4", "Audi A4", "7D", "all 7D/Audi A4", ["10ddf9a9-1f44-4e61-89db-8b2ec06c09b2.jpg", "e35ab3a1-6fc6-456e-a809-7e262afff02d.jpg", "0e9085eb-ea83-40b5-ad85-df44e5f9d7b0.jpg"]),
   fitment("exter", "Hyundai Exter", "7D", "all 7D/Exter", ["412fffc0-332e-466c-8ccd-35d09189799a.jpg", "64d89c99-855f-4cd4-a933-c0b491ba716a.jpg", "dffca080-94f0-4f9f-ae7b-570c541466dc.jpg"]),
-  fitment("gls-400d", "Mercedes GLS 400d", "7D", "all 7D/Gls 400 D 7D", ["363a5711-15c1-4f44-ab60-da85564ee96f.jpg", "d6d1f01f-ee7f-41b7-b541-f5ce4d027b3c.jpg", "dba7aae7-fd0f-4732-aa33-0e9d11bbdc2f.jpg"]),
-  fitment("grand-vitara-victoris", "Grand Vitara / Victoris", "7D", "all 7D/Grand vitara & Victoris dono me same lagta h", [], true, ["/images/client/grand-vitara-victoris-7d.png"]),
-  fitment("i10-nios", "Hyundai i10 Nios 2026", "7D", "all 7D/I-10 Nios 2026", ["6b81ae4a-6271-49b8-b848-fcc5fdc973d6.jpg", "964af54f-0039-4319-8b86-f1b3ddf6502b.jpg", "c45dfe5f-88dd-48a0-aa10-8ecc0e4cd07b.jpg"]),
-  fitment("kia-carnival", "Kia Carnival 2021/2022", "7D", "all 7D/Kia Carnival 2122", ["0304ae3e-b086-411f-b27b-0cf595d14105.jpg", "ad8810b4-0c35-4bee-96b7-b7b27370df6b.jpg", "b57de30a-3e25-4cab-88d2-00eee2852e9d.jpg", "d0874326-7ebd-4e09-96ff-de7a062a1a3e.jpg"]),
-  fitment("pajero-sfx", "Mitsubishi Pajero SFX", "7D", "all 7D/Pajero old (SFX)", ["2ddbfb8e-4879-45f4-83c2-10aa87505c05.jpg", "42053e6b-1b6c-4c25-a94b-071ed8610ed9.jpg", "832fcd8b-3ba0-4515-8434-d040406d3c0f.jpg"]),
-  fitment("polo", "Volkswagen Polo", "7D", "all 7D/Polo", ["c1c54a1d-ddf9-4b2d-a232-a39008ba0c74.jpg", "d9214a62-5ac2-4d0e-b29b-5ae46d4636aa.jpg", "fcf4b8e9-ac11-4a61-a76c-d28f3af906bd.jpg"]),
-  fitment("fortuner", "Toyota Fortuner Automatic", "9D", "Fortuner automatic 9D", ["0ef4d54c-c30c-43b7-8d56-7c2d2381da33.jpg", "96ae2f1f-0ee0-42ba-95f8-57afe6eef03e.jpg", "b6338d51-18c6-4565-8d6e-e16e11425ea9.jpg", "e108f711-6d21-4174-8417-6408f5292786.jpg"]),
-  fitment("glc-300", "Mercedes GLC 300 Automatic", "9D", "GLC 300 Automatic 9D", ["1a3fa67e-10b4-4021-97d3-dbc135c46d7c.jpg", "36ac325e-1bef-41fc-a0ed-888914177034.jpg", "9de01429-8082-462a-b9d1-dc31dde754cf.jpg"]),
-  fitment("grand-vitara-9d", "Maruti Grand Vitara", "9D", "Grand vitara 9D", ["4541b161-cd4f-498e-be31-1bed97af6338.jpg", "7af07e91-7421-447e-8f79-4f91bdda9f2d.jpg", "ebe4034d-448e-4c6a-a2ec-f0e6abdf12dd.jpg"], false),
-  fitment("hector-plus", "MG Hector Plus", "9D", "Hector plus 9D Mat", ["06e39073-fb3f-4fed-8530-9433879ddaa2.jpg", "08ade6e6-a7f0-43f1-a6ce-cec3244507f6.jpg", "8158fe21-34a6-440b-84a4-14aeb089557e.jpg", "9ee5c175-377d-46d4-b09e-d6ec3f0f8b3c.jpg"], false),
-  fitment("mercedes-gle", "Mercedes GLE 300D", "9D", "Mercedes GLE 300D 9D", ["0776a40e-20c2-4319-b631-2a67addff599.jpg", "0f167fdd-ecef-467b-9eea-27e2752ef3f9.jpg", "cb56dfe2-99bc-448b-b7a9-ff6db651246f.jpg"], false),
-  fitment("safari", "Tata Safari New", "9D", "Safari New 9D Mat", ["0082407a-4074-4f9e-bf92-b0a11ba32490.jpg", "c9bc11f1-d175-4d82-b50b-211d7d62272a.jpg", "e4fb6c92-0c1a-4f60-9437-dd57a89f4aa8.jpg", "e68b08ac-0f0f-40be-a526-6cb3007477b3.jpg"], false),
-  fitment("thar", "Mahindra Thar Manual", "9D", "Thar manual 9D", ["69ef60d5-7dbd-48a5-8238-3100053ae378.jpg", "b67c54b6-4938-4579-894f-ad5f4e59bec4.jpg", "c7c0b6fb-c4ae-4359-b526-b7de62f15ba9.jpg", "f360865f-0ca8-4160-8d85-70feeb4db534.jpg"]),
+  fitment("gls-400d", "Mercedes GLS 400d", "7D", "all 7D/Gls 400 D 7D", ["dba7aae7-fd0f-4732-aa33-0e9d11bbdc2f.jpg", "d6d1f01f-ee7f-41b7-b541-f5ce4d027b3c.jpg", "363a5711-15c1-4f44-ab60-da85564ee96f.jpg"]),
+  fitment("grand-vitara-victoris", "Grand Vitara / Victoris", "7D", "all 7D/Grand vitara & Victoris dono me same lagta h", ["1a77ce86-ac49-401b-8bd2-c322efa403ae.jpg", "f9e34d5f-cb46-4aec-b268-c813174441cc.jpg", "4aedecdd-d91b-4c8c-8f84-c46d3bbed5a4.jpg"]),
+  fitment("i10-nios", "Hyundai i10 Nios 2026", "7D", "all 7D/I-10 Nios 2026", ["6b81ae4a-6271-49b8-b848-fcc5fdc973d6.jpg", "c45dfe5f-88dd-48a0-aa10-8ecc0e4cd07b.jpg", "964af54f-0039-4319-8b86-f1b3ddf6502b.jpg"]),
+  fitment("kia-carnival", "Kia Carnival 2021/2022", "7D", "all 7D/Kia Carnival 2122", ["b57de30a-3e25-4cab-88d2-00eee2852e9d.jpg", "ad8810b4-0c35-4bee-96b7-b7b27370df6b.jpg", "0304ae3e-b086-411f-b27b-0cf595d14105.jpg", "d0874326-7ebd-4e09-96ff-de7a062a1a3e.jpg"]),
+  fitment("pajero-sfx", "Mitsubishi Pajero SFX", "7D", "all 7D/Pajero old (SFX)", ["832fcd8b-3ba0-4515-8434-d040406d3c0f.jpg", "2ddbfb8e-4879-45f4-83c2-10aa87505c05.jpg", "42053e6b-1b6c-4c25-a94b-071ed8610ed9.jpg"]),
+  fitment("polo", "Volkswagen Polo", "7D", "all 7D/Polo", ["fcf4b8e9-ac11-4a61-a76c-d28f3af906bd.jpg", "c1c54a1d-ddf9-4b2d-a232-a39008ba0c74.jpg", "d9214a62-5ac2-4d0e-b29b-5ae46d4636aa.jpg"]),
+  fitment("fortuner", "Toyota Fortuner Automatic", "9D", "Fortuner automatic 9D", ["0ef4d54c-c30c-43b7-8d56-7c2d2381da33.jpg", "e108f711-6d21-4174-8417-6408f5292786.jpg", "b6338d51-18c6-4565-8d6e-e16e11425ea9.jpg", "96ae2f1f-0ee0-42ba-95f8-57afe6eef03e.jpg"]),
+  fitment("glc-300", "Mercedes GLC 300 Automatic", "9D", "GLC 300 Automatic 9D", ["9de01429-8082-462a-b9d1-dc31dde754cf.jpg", "1a3fa67e-10b4-4021-97d3-dbc135c46d7c.jpg", "36ac325e-1bef-41fc-a0ed-888914177034.jpg"]),
+  fitment("grand-vitara-9d", "Maruti Grand Vitara", "9D", "Grand vitara 9D", ["ebe4034d-448e-4c6a-a2ec-f0e6abdf12dd.jpg", "7af07e91-7421-447e-8f79-4f91bdda9f2d.jpg", "4541b161-cd4f-498e-be31-1bed97af6338.jpg"], false),
+  fitment("hector-plus", "MG Hector Plus", "9D", "Hector plus 9D Mat", ["06e39073-fb3f-4fed-8530-9433879ddaa2.jpg", "9ee5c175-377d-46d4-b09e-d6ec3f0f8b3c.jpg", "08ade6e6-a7f0-43f1-a6ce-cec3244507f6.jpg", "8158fe21-34a6-440b-84a4-14aeb089557e.jpg"], false),
+  fitment("mercedes-gle", "Mercedes GLE 300D", "9D", "Mercedes GLE 300D 9D", ["0f167fdd-ecef-467b-9eea-27e2752ef3f9.jpg", "cb56dfe2-99bc-448b-b7a9-ff6db651246f.jpg", "0776a40e-20c2-4319-b631-2a67addff599.jpg"], false),
+  fitment("safari", "Tata Safari New", "9D", "Safari New 9D Mat", ["e4fb6c92-0c1a-4f60-9437-dd57a89f4aa8.jpg", "0082407a-4074-4f9e-bf92-b0a11ba32490.jpg", "c9bc11f1-d175-4d82-b50b-211d7d62272a.jpg", "e68b08ac-0f0f-40be-a526-6cb3007477b3.jpg"], false),
+  fitment("thar", "Mahindra Thar Manual", "9D", "Thar manual 9D", ["b67c54b6-4938-4579-894f-ad5f4e59bec4.jpg", "69ef60d5-7dbd-48a5-8238-3100053ae378.jpg", "c7c0b6fb-c4ae-4359-b526-b7de62f15ba9.jpg", "f360865f-0ca8-4160-8d85-70feeb4db534.jpg"]),
+  fitment("customer-cabin-9d", "ProGear 9D Cabin Fitment", "9D", "", [], true, ["/images/ProGear%20pics%202/Premium%20or%209D/WhatsApp%20Image%202026-09-06%20at%203.20.23%20PM.jpeg"]),
 ];
 
 export const products = fitments.map(item => ({

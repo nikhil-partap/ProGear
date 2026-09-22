@@ -126,6 +126,13 @@ export const heroSlides = [
   { image: '/images/hero-9d-wide.webp', mobileImage: '/images/hero-9d-mobile.webp', name: 'Premium', type: '9D · Ivory finish', id: 'premium' },
   { image: val('4.Full Black.jpeg'), name: 'TrueValue', type: '7D · Full Black', id: 'truevalue' },
   { image: pro('Prem Pro-Black n Red.png'), name: 'Premium Pro', type: '9D Pro · Black & Red', id: 'premium-pro' },
+  {
+    image: '/images/ProGear%20pics%203/hero-ai-luxury-banner.jpg',
+    name: 'Experience Luxury Underfoot',
+    type: 'Tailor-Made Diamond Mats',
+    id: 'premium',
+    isBanner: true,
+  },
 ];
 export const care = [
   ['01', 'Unclip & rinse', 'Remove the upper grass layer, shake out the dirt and rinse with water.'],

@@ -25,6 +25,7 @@ body {
   overflow-x: hidden;
   background: #fbfaf7;
   color: #17191c;
+  zoom: 0.9;
 }
 
 body::before {

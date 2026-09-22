@@ -7,6 +7,7 @@ import Product from "./pages/Product";
 import Shop from "./pages/Shop";
 import Gallery from "./pages/Gallery";
 import Cart from "./pages/Cart";
+import ReplacementPolicy from "./pages/ReplacementPolicy";
 
 export default function App() {
   return (
@@ -21,6 +22,8 @@ export default function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/replacement-policy" element={<ReplacementPolicy />} />
+        <Route path="/policies" element={<ReplacementPolicy />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <WhatsAppFloat />

@@ -57,7 +57,6 @@ export const fitments = [
   fitment("mercedes-gle", "Mercedes GLE 300D", "9D", "Mercedes GLE 300D 9D", ["0f167fdd-ecef-467b-9eea-27e2752ef3f9.jpg", "cb56dfe2-99bc-448b-b7a9-ff6db651246f.jpg", "0776a40e-20c2-4319-b631-2a67addff599.jpg"], false),
   fitment("safari", "Tata Safari New", "9D", "Safari New 9D Mat", ["e4fb6c92-0c1a-4f60-9437-dd57a89f4aa8.jpg", "0082407a-4074-4f9e-bf92-b0a11ba32490.jpg", "c9bc11f1-d175-4d82-b50b-211d7d62272a.jpg", "e68b08ac-0f0f-40be-a526-6cb3007477b3.jpg"], false),
   fitment("thar", "Mahindra Thar Manual", "9D", "Thar manual 9D", ["b67c54b6-4938-4579-894f-ad5f4e59bec4.jpg", "69ef60d5-7dbd-48a5-8238-3100053ae378.jpg", "c7c0b6fb-c4ae-4359-b526-b7de62f15ba9.jpg", "f360865f-0ca8-4160-8d85-70feeb4db534.jpg"]),
-  fitment("customer-cabin-9d", "ProGear 9D Cabin Fitment", "9D", "", [], true, ["/images/ProGear%20pics%203/Premium%20or%209D/Premium-1.png"]),
 ];
 
 export const products = fitments.map(item => ({

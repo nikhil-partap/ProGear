@@ -25,7 +25,7 @@ body {
   overflow-x: hidden;
   background: #fbfaf7;
   color: #17191c;
-  zoom: 0.9;
+  zoom: 0.95;
 }
 
 body::before {
@@ -1068,7 +1068,7 @@ img {
   overflow: hidden;
   border: 1px solid #e5e2dc;
   border-radius: 1rem;
-  background: #f0eeea;
+  background: #ffffff;
 }
 
 .product-gallery img {
@@ -1778,7 +1778,87 @@ img {
 .announcement {
   background: #181a1c;
   color: #ddd;
-  height: 35px
+  height: 35px;
+}
+
+.running-line-bar {
+  position: relative;
+  background: #121416;
+  color: #e5e5e5;
+  height: 36px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.running-line-track {
+  display: flex;
+  width: max-content;
+  animation: runningLineScroll 28s linear infinite;
+  will-change: transform;
+}
+
+.running-line-track:hover {
+  animation-play-state: paused;
+}
+
+.running-line-content {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  padding-right: 2.2rem;
+  white-space: nowrap;
+}
+
+.running-line-content span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .6px;
+  color: #ececec;
+  text-transform: uppercase;
+}
+
+.running-line-content .ticker-dot {
+  color: #e21f26;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.announcement-call-link {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(18,20,22,0) 0%, rgba(18,20,22,0.92) 22%, #121416 100%);
+  padding: 0 1.25rem 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  z-index: 3;
+  white-space: nowrap;
+  letter-spacing: .3px;
+}
+
+.announcement-call-link:hover {
+  color: #e21f26;
+}
+
+@keyframes runningLineScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 640px) {
+  .announcement-call-link {
+    display: none;
+  }
 }
 
 .announcement .page {
@@ -2344,7 +2424,7 @@ img {
 .product-gallery {
   position: relative;
   aspect-ratio: 1;
-  background: #f1f2f2;
+  background: #ffffff;
   overflow: hidden
 }
 

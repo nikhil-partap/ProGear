@@ -88,7 +88,6 @@ export const collections = [
       prem('Premium-1.png'),
       prem('Premium-6.png'),
       prem('Premium-7.png'),
-      prem('Premium-5.png'),
       prem('Premium-8.png'),
       prem('Premium-10.png'),
     ],

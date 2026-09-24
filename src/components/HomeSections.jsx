@@ -12,7 +12,7 @@ export function Process() {
 
 export function FitmentShowcase() {
   const visible = fitments.slice(0, 8);
-  return <section className="section fitment-section" id="real-fitments"><div className="page"><div className="section-heading"><div><p className="eyebrow">Car-wise catalogue</p><h2 className="section-title">Fitted in real cars.</h2></div><div className="section-side-copy"><p>Browse real fitment images from the current library.</p><Link className="text-link" to="/shop">View all models <span aria-hidden="true">↗</span></Link></div></div><div className="fitment-grid">{visible.map(item => <Link to={item.type.includes("9D") ? "/product/premium" : "/product/truevalue"} className="fitment-card" key={item.id}><img src={item.images[0]} alt={`${item.model} ${item.type} mat fitment`} loading="lazy" /><span className="fitment-badge">{item.type}</span><strong>{item.model}</strong></Link>)}</div></div></section>;
+  return <section className="section fitment-section" id="real-fitments"><div className="page"><div className="section-heading"><div><p className="eyebrow">Car-wise catalogue</p><h2 className="section-title">Fitted in real cars.</h2></div><div className="section-side-copy"><p>Browse real fitment images from the current library.</p><Link className="text-link" to="/gallery">View all models <span aria-hidden="true">↗</span></Link></div></div><div className="fitment-grid">{visible.map(item => <Link to="/gallery" className="fitment-card" key={item.id}><img src={item.images[0]} alt={`${item.model} ${item.type} mat fitment`} loading="lazy" /><span className="fitment-badge">{item.type}</span><strong>{item.model}</strong></Link>)}</div></div></section>;
 }
 
 export function Testimonials() {

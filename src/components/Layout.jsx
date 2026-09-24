@@ -43,7 +43,27 @@ export function Header({ cartCount = 0 }) {
   useEffect(() => { const update = () => setCount(readCart().reduce((sum, item) => sum + item.quantity, 0)); update(); window.addEventListener('storage', update); window.addEventListener('progear-cart-updated', update); return () => { window.removeEventListener('storage', update); window.removeEventListener('progear-cart-updated', update); }; }, [location.pathname]);
   return <>
     <a className="skip-link" href="#main-content">Skip to content</a>
-    <div className="announcement"><div className="page"><span><Icon name="truck" size={15} /> FREE SHIPPING ACROSS INDIA</span><span><b>EXTRA 10% OFF ON FULL PAYMENT</b> <Icon name="arrow" size={14} /></span><a href={'tel:' + site.whatsapp}>Need help? Call us <Icon name="diagonal" size={13} /></a></div></div>
+    <div className="announcement running-line-bar" role="region" aria-label="Offers announcement">
+      <div className="running-line-track">
+        <div className="running-line-content">
+          <span><Icon name="truck" size={14} /> Free shipping available in PAN India</span>
+          <span className="ticker-dot">•</span>
+          <span><Icon name="shield" size={13} /> Available on Discounted prices</span>
+          <span className="ticker-dot">•</span>
+          <span><Icon name="check" size={13} /> Get additional 10% discount on full payment</span>
+          <span className="ticker-dot">•</span>
+        </div>
+        <div className="running-line-content" aria-hidden="true">
+          <span><Icon name="truck" size={14} /> Free shipping available in PAN India</span>
+          <span className="ticker-dot">•</span>
+          <span><Icon name="shield" size={13} /> Available on Discounted prices</span>
+          <span className="ticker-dot">•</span>
+          <span><Icon name="check" size={13} /> Get additional 10% discount on full payment</span>
+          <span className="ticker-dot">•</span>
+        </div>
+      </div>
+      <a href={'tel:' + site.whatsapp} className="announcement-call-link">Need help? Call us <Icon name="diagonal" size={12} /></a>
+    </div>
     <header ref={headerRef} className="site-header"><div className="page header-inner"><Link to="/" className="brand-lockup" aria-label="ProGear Mats home"><img src="/images/progear-logo1.png" alt="ProGear premium car mats" /></Link><nav className="desktop-nav" aria-label="Main navigation">{navItems.map(([to, label]) => <NavLink to={to} end={to === '/'} key={to}>{label}</NavLink>)}</nav><div className="header-actions"><Link className="header-help" to="/contact">Let’s talk <Icon name="diagonal" size={16} /></Link><Link to="/cart" className="cart-link" aria-label={'Shopping cart, ' + count + ' items'}><Icon name="bag" /><span className="cart-word">Cart</span><span className="cart-count">{count}</span></Link><button ref={menuRef} type="button" className="icon-button menu-button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(v => !v)}><Icon name={open ? 'close' : 'menu'} /></button></div></div>{open && <nav className="mobile-nav page" id="mobile-navigation" aria-label="Mobile navigation">{[...navItems, ['/replacement-policy', 'Replacement Policy'], ['/contact', 'Contact & support'], ['/cart', 'Cart']].map(([to, label]) => <NavLink to={to} end={to === '/'} key={to} onClick={() => setOpen(false)}><span>{label}</span><Icon name="arrow" size={16} /></NavLink>)}</nav>}</header>
   </>;
 }

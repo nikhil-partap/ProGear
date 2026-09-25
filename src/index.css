@@ -1974,7 +1974,12 @@ img {
 
 .hero-photos img:not(:first-child) {
   object-fit: contain;
-  background: #292728
+  background: #292728;
+}
+
+.hero-photos img[src*="hero-interior"] {
+  object-fit: cover !important;
+  background: #2c2928;
 }
 
 .hero.hero-has-banner {
@@ -3036,7 +3041,7 @@ body {
     background: #eee;
   }
 
-  .hero-slide-0 .hero-photos {
+  .hero-slide-1 .hero-photos {
     aspect-ratio: 4 / 5;
   }
 

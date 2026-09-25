@@ -121,10 +121,6 @@ export const money = value => new Intl.NumberFormat('en-IN', { style: 'currency'
 export const priceFor = (product, category = 'Normal', seats = '5') => product?.prices?.[category]?.[seats] ?? null;
 export const startingPrice = product => priceFor(product)?.[0] ?? product.startingPrice;
 export const heroSlides = [
-  { image: '/images/hero-interior.png', name: 'Signature Cabin', type: 'AI-Rendered Luxury Fitment', id: 'premium' },
-  { image: '/images/hero-9d-wide.webp', mobileImage: '/images/hero-9d-mobile.webp', name: 'Premium', type: '9D · Ivory finish', id: 'premium' },
-  { image: val('4.Full Black.jpeg'), name: 'TrueValue', type: '7D · Full Black', id: 'truevalue' },
-  { image: pro('Prem Pro-Black n Red.png'), name: 'Premium Pro', type: '9D Pro · Black & Red', id: 'premium-pro' },
   {
     image: '/images/ProGear%20pics%203/hero-ai-luxury-banner.jpg',
     name: 'Experience Luxury Underfoot',
@@ -132,6 +128,10 @@ export const heroSlides = [
     id: 'premium',
     isBanner: true,
   },
+  { image: '/images/hero-interior.png', name: 'Signature Cabin', type: 'AI-Rendered Luxury Fitment', id: 'premium' },
+  { image: '/images/hero-9d-wide.webp', mobileImage: '/images/hero-9d-mobile.webp', name: 'Premium', type: '9D · Ivory finish', id: 'premium' },
+  { image: val('4.Full Black.jpeg'), name: 'TrueValue', type: '7D · Full Black', id: 'truevalue' },
+  { image: pro('Prem Pro-Black n Red.png'), name: 'Premium Pro', type: '9D Pro · Black & Red', id: 'premium-pro' },
 ];
 export const care = [
   ['01', 'Unclip & rinse', 'Remove the upper grass layer, shake out the dirt and rinse with water.'],

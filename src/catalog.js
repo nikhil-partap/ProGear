@@ -21,7 +21,7 @@ export const collections = [
   {
     id: 'universal', name: 'Universal', type: 'All-weather', label: 'The everyday essential',
     description: 'Practical, all-weather protection. Trim-to-fit mats that make everyday upkeep simple.',
-    prices: { Normal: { 5: [2099, 2499], 7: [2499, 2499] }, Luxury: { 5: [2099, 2499], 7: [2499, 2499] } },
+    prices: { Normal: { 5: [2099, 2499], 7: [2499, 2999] }, Luxury: { 5: [2099, 2499], 7: [2499, 2999] } },
     colours: [colour('Diamond Black & Grey', '#1f2022', '/images/ProGear%20pics%203/Add%20this%20to%20Universal%20image.jpg')],
     images: ['/images/ProGear%20pics%203/Add%20this%20to%20Universal%20image.jpg'],
     features: ['Trim-to-fit design', 'Deep spill channels', 'All-weather protection'],

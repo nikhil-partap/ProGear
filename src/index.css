@@ -3045,6 +3045,10 @@ body {
     aspect-ratio: 4 / 5;
   }
 
+  .hero.hero-has-banner {
+    min-height: 0;
+  }
+
   .hero.hero-has-banner .hero-photos {
     aspect-ratio: 16 / 9;
     background: #111;

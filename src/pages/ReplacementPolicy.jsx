@@ -5,7 +5,7 @@ import { whatsappUrl } from '../data';
 export default function ReplacementPolicy() {
   return (
     <main id="main-content" className="page page-top policy-page">
-      <section className="page-intro">
+      <section className="page-intro policy-intro">
         <p className="eyebrow">Customer Guarantee</p>
         <h1 className="page-title">Replacement <span>Policy.</span></h1>
         <p className="page-lede">
@@ -16,49 +16,51 @@ export default function ReplacementPolicy() {
       <section className="section policy-content">
         <div className="policy-grid">
           <article className="policy-card highlight-card">
-            <Icon name="shield" size={28} />
-            <h2>7-Day Direct Replacement Guarantee</h2>
+            <div className="policy-card-icon">
+              <Icon name="shield" size={24} />
+            </div>
+            <h2>7-Day Hassle-Free Replacement</h2>
             <p>
               If your ProGear mats do not fit your specified vehicle model correctly or arrive with any manufacturing defect, we will replace them at no extra charge to you.
             </p>
           </article>
 
           <article className="policy-card">
-            <h3>1. Eligible Reasons for Replacement</h3>
-            <ul>
+            <h3>Eligible Reasons for Replacement</h3>
+            <ul className="policy-list">
               <li><strong>Fitment Mismatch:</strong> Floor mat pattern does not align with your car’s original cabin floor contour (for the year & variant confirmed).</li>
               <li><strong>Manufacturing Defect:</strong> Stitching issues, clip damage, or surface tears upon unboxing.</li>
-              <li><strong>Transit Damage or Wrong Item:</strong> Damaged during shipping or incorrect finish received.</li>
             </ul>
           </article>
 
           <article className="policy-card">
-            <h3>2. Easy 3-Step Replacement Process</h3>
-            <ol className="policy-steps">
+            <h3>Replacement Process</h3>
+            <ul className="policy-list">
               <li>
-                <strong>01. Take photos or a video</strong>
-                <span>Snap 2–3 clear photos showing the fitting in your car floor or the affected area.</span>
+                <strong>Take photos or a video:</strong> Snap 2–3 clear photos showing the fitting in your car floor or the affected area.
               </li>
               <li>
-                <strong>02. Contact on WhatsApp</strong>
-                <span>Share your photos with our support team on <a href={whatsappUrl("Hi ProGear Team, I need help with a replacement request for my order.")} target="_blank" rel="noreferrer">+91 75308 19890</a>.</span>
+                <strong>Contact on WhatsApp:</strong> Share your photos with our support team on{' '}
+                <a href={whatsappUrl("Hi ProGear Team, I need help with a replacement request for my order.")} target="_blank" rel="noreferrer">
+                  +91 75308 19890
+                </a>.
               </li>
               <li>
-                <strong>03. Get your replacement</strong>
-                <span>Once verified, our team will dispatch the correct replacement piece or full set immediately.</span>
+                <strong>Get your replacement:</strong> Once verified, our team will dispatch the correct replacement piece or full set immediately.
               </li>
-            </ol>
+            </ul>
           </article>
 
           <article className="policy-card">
-            <h3>3. Important Guidelines</h3>
+            <h3>Important Guidelines</h3>
             <p>
               To ensure a smooth replacement process:
             </p>
-            <ul>
+            <ul className="policy-list">
               <li>Replacement requests must be submitted within <strong>7 days of delivery</strong>.</li>
               <li>The mats should be in clean condition without intentional damage or alterations.</li>
               <li>Please confirm your exact car brand, model year, and variant when placing your order so our team checks the correct floor pattern before dispatch.</li>
+              <li>Replacements are not accepted for custom-made products or change-of-mind requests, unless specifically permitted by Pro Gear.</li>
             </ul>
           </article>
         </div>
@@ -81,3 +83,4 @@ export default function ReplacementPolicy() {
     </main>
   );
 }
+
